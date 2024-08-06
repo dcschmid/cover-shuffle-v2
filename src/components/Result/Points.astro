@@ -1,0 +1,39 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "../Shared/Button.astro";
+---
+
+<div class="points">
+  <Icon name="coin" width={48} height={48} />
+  <span class="point"></span>
+
+  <div class="finishButton">
+    <Button id="finishedButton" url="#" />
+  </div>
+</div>
+
+<style>
+  .finishButton {
+    margin-left: var(--spacing-spacing-md);
+  }
+
+  .points {
+    padding: 24px 20px 23px 112px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    letter-spacing: 2px;
+    color: var(--colour-text-primary);
+    leading-trim: both;
+    text-edge: cap;
+  }
+
+  .point {
+    display: block;
+    margin-left: var(--spacing-spacing-s);
+  }
+</style>

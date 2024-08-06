@@ -1,0 +1,187 @@
+---
+import { Icon } from "astro-icon/components";
+import { When } from "@astropub/flow";
+
+interface Props {
+  title: string;
+  showHeader?: boolean;
+  showUserLink?: boolean;
+}
+
+const { title, showHeader = true, showUserLink = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <When test1={showHeader}>
+      <header>
+        <slot name="left-headercol" />
+        <div>
+          <a href="/gamehome"><Icon name="cover-shuffle-logo" width={84} height={59.229} /></a>
+        </div>
+        <div class="iconGroup">
+          <When test={showUserLink}>
+            <Icon name="settings" width={24} height={22.24} />
+            <a href="/user"><Icon name="user-white" width={24} height={22.24} /></a>
+          </When>
+          <When test={!showUserLink}>
+            <Icon name="settings-grey" width={24} height={22.24} />
+            <Icon name="user" width={24} height={22.24} />
+          </When>
+        </div>
+      </header>
+    </When>
+
+    <main>
+      <slot />
+    </main>
+
+    <style is:global>
+      :root {
+        --colour-BG-primary: #111a15;
+        --colour-BG-secondary: #2b2b2b;
+        --colour-BG-secondary: #2b2b2b;
+        --colour-BTN-disabled: #686868;
+        --colour-BTN-error: #ee0a4e;
+        --colour-BTN-gold: #b89826;
+        --colour-BTN-inverted-2: #fff;
+        --colour-BTN-inverted: #1a0e38;
+        --colour-BTN-primary: #ffe500;
+        --colour-BTN-verification: #2bdd6c;
+        --colour-border-disabled: #686868;
+        --colour-border-secondary: #ffe500;
+        --colour-text-BTN-primary: #1a0e38;
+        --colour-text-active: #ffe500;
+        --colour-text-gold: #b89826;
+        --colour-text-link: #b89826;
+        --colour-text-primary: #fff;
+        --colour-text-secondary: #aeaeae;
+        --radius-radius-full: 128px;
+        --radius-radius-rounded: 8px;
+        --spacing-15: 12px;
+        --spacing-1: 8px;
+        --spacing-2: 16px;
+        --spacing-3: 24px;
+        --spacing-spacing-lg: 32px;
+        --spacing-spacing-md: 24px;
+        --spacing-spacing-s: 12px;
+        --spacing-spacing-xl: 40px;
+        --spacing-spacing-xs: 8px;
+        --spacing-spacing-xxs: 4px;
+      }
+
+      html {
+        font-family: system-ui, sans-serif;
+        background: var(--colour-BG-primary);
+      }
+
+      body {
+        padding: 0;
+        width: 480px;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: top;
+        margin: var(--spacing-spacing-md) 0;
+      }
+
+      .iconGroup {
+        display: inline-flex;
+        align-items: top;
+        gap: var(--spacing-spacing-md);
+      }
+
+      main {
+        color: var(--colour-BG-primary);
+        font-size: 1rem;
+        line-height: 1.6;
+        color: #fff;
+      }
+
+      .hasMargin {
+        margin: 0 var(--spacing-spacing-s);
+      }
+
+      .resultItem {
+        position: relative;
+        width: 126px;
+        flex-direction: column;
+        display: flex;
+      }
+
+      .resultCover {
+        width: 126px;
+        height: 126px;
+      }
+
+      .resultBand {
+        margin-top: var(--spacing-spacing-s);
+        color: var(--colour-text-primary);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+      }
+
+      .resultAlbum {
+        color: var(--colour-text-secondary);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+
+      .resultPlace {
+        position: absolute;
+        right: -14px;
+        top: -14px;
+        border-radius: var(--radius-radius-full);
+        background: var(--colour-BTN-verification);
+        color: var(--colour-text-BTN-primary);
+        text-align: center;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 120%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--spacing-spacing-xxs);
+        width: 31px;
+        height: 31px;
+      }
+
+      .resultError {
+        background: var(--colour-BTN-error);
+        color: var(--colour-text-BTN-inverted);
+      }
+
+      .resultData {
+        position: absolute;
+        top: 43px;
+        left: 20px;
+        padding: var(--spacing-spacing-xxs) var(--spacing-spacing-md);
+        border-radius: var(--radius-radius-full);
+        background: var(--colour-BTN-inverted);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 35.28px;
+      }
+    </style>
+  </body>
+</html>

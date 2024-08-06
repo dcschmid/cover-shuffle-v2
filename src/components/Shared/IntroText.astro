@@ -1,0 +1,52 @@
+---
+const { headline, subline, whiteText, isSmallHeadline = false, isWhiteSubline = false } = Astro.props;
+---
+
+<div class="introText">
+  <div class:list={["headline", isSmallHeadline && "isSmallHeadline"]}>{headline}</div>
+  <div class:list={["subline", isWhiteSubline && "whiteText"]}>
+    {subline}
+    <span class="whiteText">{whiteText}</span>
+  </div>
+</div>
+
+<style>
+  .introText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-spacing-s);
+  }
+
+  .headline {
+    color: var(--colour-text-primary);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 120%;
+    letter-spacing: 0.36px;
+  }
+
+  .isSmallHeadline {
+    color: var(--colour-text-secondary);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+  }
+
+  .subline {
+    color: var(--colour-text-secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    text-align: center;
+    width: 386px;
+  }
+
+  .whiteText {
+    color: var(--colour-text-primary);
+  }
+</style>
