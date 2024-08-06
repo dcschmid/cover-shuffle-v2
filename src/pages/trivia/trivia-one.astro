@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import { For } from "@astropub/flow";
 import TriviaItem from "../../components/Trivia/TriviaItem.astro";
-import { shuffleArray } from "../../utils/shuffleArray";
+import { shuffleArray } from "../../utils/shared/shuffleArray";
 import TriviaStartOverlay from "../../components/Trivia/TriviaStartOverlay.astro";
 import TimeupsOverlay from "../../components/Overlays/TimeupsOverlay.astro";
 import TriviaLostOverlay from "../../components/Trivia/TriviaLostOverlay.astro";
@@ -138,7 +138,7 @@ const randomizedTriviaData = shuffleArray(triviaOneData);
 
         // Clear the timer interval
         clearInterval(timerInterval!);
-        
+
         localStorage.setItem("triviaRound1Won", String("false"));
 
         calculateTheCurrentPoints();
